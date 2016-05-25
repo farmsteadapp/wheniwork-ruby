@@ -1,8 +1,8 @@
-# WhenIWork::InlineResponse2003
+# WhenIWork::InlineResponse2004
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**users** | [**Array&lt;User&gt;**](User.md) |  | [optional] 
+**user** | [**User**](User.md) |  | [optional] 
 
 

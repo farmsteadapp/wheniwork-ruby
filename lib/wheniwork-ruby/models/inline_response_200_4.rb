@@ -22,22 +22,22 @@ limitations under the License.
 require 'date'
 
 module WhenIWork
-  class InlineResponse2003
+  class InlineResponse2004
     include WhenIWork::Response
 
-    attr_accessor :users
+    attr_accessor :user
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'users' => :'users'
+        :'user' => :'user'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'users' => :'Array<User>'
+        :'user' => :'User'
       }
     end
 
@@ -49,10 +49,8 @@ module WhenIWork
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'users')
-        if (value = attributes[:'users']).is_a?(Array)
-          self.users = value
-        end
+      if attributes.has_key?(:'user')
+        self.user = attributes[:'user']
       end
 
     end
@@ -74,13 +72,13 @@ module WhenIWork
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          users == o.users
+          user == o.user
     end
 
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [users].hash
+      [user].hash
     end
   end
 end

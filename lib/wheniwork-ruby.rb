@@ -24,18 +24,22 @@ require 'wheniwork-ruby/api_client'
 require 'wheniwork-ruby/api_error'
 require 'wheniwork-ruby/version'
 require 'wheniwork-ruby/configuration'
+require 'wheniwork-ruby/modules/response'
 
 # Models
 require 'wheniwork-ruby/models/inline_response_200'
 require 'wheniwork-ruby/models/inline_response_200_1'
 require 'wheniwork-ruby/models/inline_response_200_2'
 require 'wheniwork-ruby/models/inline_response_200_3'
+require 'wheniwork-ruby/models/inline_response_200_4'
 require 'wheniwork-ruby/models/position'
 require 'wheniwork-ruby/models/shift'
 require 'wheniwork-ruby/models/user'
 
 # APIs
 require 'wheniwork-ruby/api/api'
+
+# modules
 
 module WhenIWork
   class << self

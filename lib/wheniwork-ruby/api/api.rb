@@ -146,8 +146,8 @@ module WhenIWork
     # Get a list of shifts.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :user_id The ID of the user to get shifts for. For multiple users, enter a list of user IDs separated by commas (e.g. 1,5,3).
-    # @option opts [DateTime] :start Start time for the search window. The default is the current date and time
-    # @option opts [DateTime] :_end End time for the search window. The default is exactly three days from the start time.
+    # @option opts [DateTime] :start_time Start time for the search window. The default is the current date and time
+    # @option opts [DateTime] :end_time End time for the search window. The default is exactly three days from the start time.
     # @option opts [String] :location_id The ID of the location to get shifts for. For multiple locations, enter a list of location IDs separated by commas.
     # @option opts [String] :position_id The ID of the position to get shifts for. For multiple position, enter a list of position IDs separated by commas.
     # @option opts [BOOLEAN] :include_open Whether to include OpenShifts in the results.
@@ -163,8 +163,8 @@ module WhenIWork
     # Get a list of shifts.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :user_id The ID of the user to get shifts for. For multiple users, enter a list of user IDs separated by commas (e.g. 1,5,3).
-    # @option opts [DateTime] :start Start time for the search window. The default is the current date and time
-    # @option opts [DateTime] :_end End time for the search window. The default is exactly three days from the start time.
+    # @option opts [DateTime] :start_date Start time for the search window. The default is the current date and time
+    # @option opts [DateTime] :end_date End time for the search window. The default is exactly three days from the start time.
     # @option opts [String] :location_id The ID of the location to get shifts for. For multiple locations, enter a list of location IDs separated by commas.
     # @option opts [String] :position_id The ID of the position to get shifts for. For multiple position, enter a list of position IDs separated by commas.
     # @option opts [BOOLEAN] :include_open Whether to include OpenShifts in the results.
@@ -181,8 +181,8 @@ module WhenIWork
       # query parameters
       query_params = {}
       query_params[:'user_id'] = opts[:'user_id'] if opts[:'user_id']
-      query_params[:'start'] = opts[:'start'] if opts[:'start']
-      query_params[:'end'] = opts[:'_end'] if opts[:'_end']
+      query_params[:'start'] = opts[:'start_date'] if opts[:'start_date']
+      query_params[:'end'] = opts[:'end_date'] if opts[:'end_date']
       query_params[:'location_id'] = opts[:'location_id'] if opts[:'location_id']
       query_params[:'position_id'] = opts[:'position_id'] if opts[:'position_id']
       query_params[:'include_open'] = opts[:'include_open'] if opts[:'include_open']
@@ -272,6 +272,70 @@ module WhenIWork
         :return_type => 'InlineResponse2003')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: Api#get_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    #
+    # Get a list of users.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :ids The IDs of the users to retrieve, as a comma-separated list (e.g. 9,17,42).
+    # @option opts [String] :location_id The ID of the location to get users for. For multiple locations, enter a list of location IDs separated by commas.
+    # @option opts [BOOLEAN] :show_deleted Whether to include deleted users in the results. Defaults to false.
+    # @return [InlineResponse2003]
+    def get_users(opts = {})
+      data, status_code, headers = get_users_with_http_info(opts)
+      return data
+    end
+
+    #
+    # Get a list of users.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :ids The IDs of the users to retrieve, as a comma-separated list (e.g. 9,17,42).
+    # @option opts [String] :location_id The ID of the location to get users for. For multiple locations, enter a list of location IDs separated by commas.
+    # @option opts [BOOLEAN] :show_deleted Whether to include deleted users in the results. Defaults to false.
+    # @return [Array<(InlineResponse2003, Fixnum, Hash)>] InlineResponse2003 data, response status code and response headers
+    def get_users_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi#get_users ..."
+      end
+
+      # resource path
+      local_var_path = "/users".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'ids'] = opts[:'ids'] if opts[:'ids']
+      query_params[:'location_id'] = opts[:'location_id'] if opts[:'location_id']
+      query_params[:'show_deleted'] = opts[:'show_deleted'] if opts[:'show_deleted']
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/json']
+      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+
+      auth_names = ['apiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse2003')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_users\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -22,8 +22,9 @@ limitations under the License.
 require 'date'
 
 module WhenIWork
-
   class InlineResponse2001
+    include WhenIWork::Response
+
     attr_accessor :start
 
     attr_accessor :_end
@@ -94,36 +95,10 @@ module WhenIWork
           shifts == o.shifts
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
-
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
       [start, _end, shifts].hash
-    end
-
-    # Builds the object from hash
-    # @param [Hash] attributes Model attributes in the form of hash
-    # @return [Object] Returns the model itself
-    def build_from_hash(attributes)
-      return nil unless attributes.is_a?(Hash)
-      self.class.swagger_types.each_pair do |key, type|
-        if type =~ /^Array<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
-          # is documented as an array but the input is not
-          if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map{ |v| _deserialize($1, v) } )
-          end
-        elsif !attributes[self.class.attribute_map[key]].nil?
-          self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
-        end # or else data not found in attributes(hash), not an issue as the data can be optional
-      end
-
-      self
     end
 
     # Deserializes the data based on type
@@ -209,7 +184,5 @@ module WhenIWork
         value
       end
     end
-
   end
-
 end

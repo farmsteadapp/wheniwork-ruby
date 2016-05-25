@@ -20,5 +20,5 @@ limitations under the License.
 =end
 
 module WhenIWork
-  VERSION = "1.0.0"
+  VERSION = "1.1.0"
 end
