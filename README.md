@@ -62,9 +62,9 @@ WhenIWork.configure do |config|
   #config.api_key_prefix['W-Token'] = 'Bearer'
 end
 
-api_instance = WhenIWork::DefaultApi.new
+api_instance = WhenIWork::Api.new
 
-opts = { 
+opts = {
   show_deleted: true # BOOLEAN | Whether to show positions that have been deleted.
 }
 
@@ -72,7 +72,7 @@ begin
   result = api_instance.get_positions(opts)
   p result
 rescue WhenIWork::ApiError => e
-  puts "Exception when calling DefaultApi->get_positions: #{e}"
+  puts "Exception when calling Api->get_positions: #{e}"
 end
 
 ```
@@ -83,10 +83,10 @@ All URIs are relative to *https://api.wheniwork.com/2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*WhenIWork::DefaultApi* | [**get_positions**](docs/DefaultApi.md#get_positions) | **GET** /positions | 
-*WhenIWork::DefaultApi* | [**get_shift**](docs/DefaultApi.md#get_shift) | **GET** /shifts/{shift-id} | 
-*WhenIWork::DefaultApi* | [**get_shifts**](docs/DefaultApi.md#get_shifts) | **GET** /shifts | 
-*WhenIWork::DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /users/{user-id} | 
+*WhenIWork::Api* | [**get_positions**](docs/Api.md#get_positions) | **GET** /positions |
+*WhenIWork::Api* | [**get_shift**](docs/Api.md#get_shift) | **GET** /shifts/{shift-id} |
+*WhenIWork::Api* | [**get_shifts**](docs/Api.md#get_shifts) | **GET** /shifts |
+*WhenIWork::Api* | [**get_user**](docs/Api.md#get_user) | **GET** /users/{user-id} |
 
 
 ## Documentation for Models

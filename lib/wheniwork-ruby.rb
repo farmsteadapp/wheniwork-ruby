@@ -35,7 +35,7 @@ require 'wheniwork-ruby/models/shift'
 require 'wheniwork-ruby/models/user'
 
 # APIs
-require 'wheniwork-ruby/api/default_api'
+require 'wheniwork-ruby/api/api'
 
 module WhenIWork
   class << self

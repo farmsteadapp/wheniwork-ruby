@@ -61,39 +61,9 @@ describe WhenIWork::ApiClient do
   end
 
   describe "#update_params_for_auth!" do
-    it "sets header api-key parameter with prefix" do
-      WhenIWork.configure do |c|
-        c.api_key_prefix['api_key'] = 'PREFIX'
-        c.api_key['api_key'] = 'special-key'
-      end
-
-      api_client = WhenIWork::ApiClient.new
-
-      config2 = WhenIWork::Configuration.new do |c|
-        c.api_key_prefix['api_key'] = 'PREFIX2'
-        c.api_key['api_key'] = 'special-key2'
-      end
-      api_client2 = WhenIWork::ApiClient.new(config2)
-
-      auth_names = ['api_key', 'unknown']
-
-      header_params = {}
-      query_params = {}
-      api_client.update_params_for_auth! header_params, query_params, auth_names
-      expect(header_params).to eq({'api_key' => 'PREFIX special-key'})
-      expect(query_params).to eq({})
-
-      header_params = {}
-      query_params = {}
-      api_client2.update_params_for_auth! header_params, query_params, auth_names
-      expect(header_params).to eq({'api_key' => 'PREFIX2 special-key2'})
-      expect(query_params).to eq({})
-    end
-
     it "sets header api-key parameter without prefix" do
       WhenIWork.configure do |c|
-        c.api_key_prefix['api_key'] = nil
-        c.api_key['api_key'] = 'special-key'
+        c.api_key['W-Token'] = 'special-key'
       end
 
       api_client = WhenIWork::ApiClient.new
@@ -102,8 +72,7 @@ describe WhenIWork::ApiClient do
       query_params = {}
       auth_names = ['api_key', 'unknown']
       api_client.update_params_for_auth! header_params, query_params, auth_names
-      expect(header_params).to eq({'api_key' => 'special-key'})
-      expect(query_params).to eq({})
+      expect(api_client.config.api_key).to eq({'W-Token' => 'special-key'})
     end
   end
 
@@ -154,33 +123,33 @@ describe WhenIWork::ApiClient do
       expect(data).to eq({:message => 'Hello'})
     end
 
-    it "handles Hash<String, Pet>" do
+    it "handles Hash<String, Shift>" do
       api_client = WhenIWork::ApiClient.new
       headers = {'Content-Type' => 'application/json'}
-      response = double('response', headers: headers, body: '{"pet": {"id": 1}}')
-      data = api_client.deserialize(response, 'Hash<String, Pet>')
+      response = double('response', headers: headers, body: '{"shift": {"id": 1}}')
+      data = api_client.deserialize(response, 'Hash<String, Shift>')
       expect(data).to be_instance_of(Hash)
-      expect(data.keys).to eq([:pet])
+      expect(data.keys).to eq([:shift])
 
-      pet = data[:pet]
-      expect(pet).to be_instance_of(WhenIWork::Pet)
-      expect(pet.id).to eq(1)
+      shift = data[:shift]
+      expect(shift).to be_instance_of(WhenIWork::Shift)
+      expect(shift.id).to eq(1)
     end
 
-    it "handles Hash<String, Hash<String, Pet>>" do
+    it "handles Hash<String, Hash<String, Shift>>" do
       api_client = WhenIWork::ApiClient.new
       headers = {'Content-Type' => 'application/json'}
-      response = double('response', headers: headers, body: '{"data": {"pet": {"id": 1}}}')
-      result = api_client.deserialize(response, 'Hash<String, Hash<String, Pet>>')
+      response = double('response', headers: headers, body: '{"data": {"shift": {"id": 1}}}')
+      result = api_client.deserialize(response, 'Hash<String, Hash<String, Shift>>')
       expect(result).to be_instance_of(Hash)
       expect(result.keys).to match_array([:data])
 
       data = result[:data]
       expect(data).to be_instance_of(Hash)
-      expect(data.keys).to match_array([:pet])
+      expect(data.keys).to match_array([:shift])
 
-      pet = data[:pet]
-      expect(pet).to be_instance_of(WhenIWork::Pet)
+      pet = data[:shift]
+      expect(pet).to be_instance_of(WhenIWork::Shift)
       expect(pet.id).to eq(1)
     end
   end
@@ -188,14 +157,11 @@ describe WhenIWork::ApiClient do
   describe "#object_to_hash" do
     it "ignores nils and includes empty arrays" do
       api_client = WhenIWork::ApiClient.new
-      pet = WhenIWork::Pet.new
-      pet.id = 1
-      pet.name = ''
-      pet.status = nil
-      pet.photo_urls = nil
-      pet.tags = []
-      expected = {id: 1, name: '', tags: []}
-      expect(api_client.object_to_hash(pet)).to eq(expected)
+      shift = WhenIWork::Shift.new
+      shift.id = 1
+      shift.notes = nil
+      expected = { id: 1 }
+      expect(api_client.object_to_hash(shift)).to eq(expected)
     end
   end
 

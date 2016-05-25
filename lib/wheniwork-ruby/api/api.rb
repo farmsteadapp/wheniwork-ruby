@@ -22,14 +22,14 @@ limitations under the License.
 require "uri"
 
 module WhenIWork
-  class DefaultApi
+  class Api
     attr_accessor :api_client
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
 
-    # 
+    #
     # This method allows you to get a list of all positions in your account.
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :show_deleted Whether to show positions that have been deleted.
@@ -39,14 +39,14 @@ module WhenIWork
       return data
     end
 
-    # 
+    #
     # This method allows you to get a list of all positions in your account.
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :show_deleted Whether to show positions that have been deleted.
     # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
     def get_positions_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: DefaultApi.get_positions ..."
+        @api_client.config.logger.debug "Calling API: Api.get_positions ..."
       end
       # resource path
       local_var_path = "/positions".sub('{format}','json')
@@ -80,12 +80,12 @@ module WhenIWork
         :auth_names => auth_names,
         :return_type => 'InlineResponse200')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_positions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: Api#get_positions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # 
+    #
     # Gets the details of an existing shift.
     # @param shift_id max records to return
     # @param [Hash] opts the optional parameters
@@ -95,17 +95,17 @@ module WhenIWork
       return data
     end
 
-    # 
+    #
     # Gets the details of an existing shift.
     # @param shift_id max records to return
     # @param [Hash] opts the optional parameters
     # @return [Array<(InlineResponse2002, Fixnum, Hash)>] InlineResponse2002 data, response status code and response headers
     def get_shift_with_http_info(shift_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: DefaultApi.get_shift ..."
+        @api_client.config.logger.debug "Calling API: Api.get_shift ..."
       end
       # verify the required parameter 'shift_id' is set
-      fail ArgumentError, "Missing the required parameter 'shift_id' when calling DefaultApi.get_shift" if shift_id.nil?
+      fail ArgumentError, "Missing the required parameter 'shift_id' when calling Api.get_shift" if shift_id.nil?
       # resource path
       local_var_path = "/shifts/{shift-id}".sub('{format}','json').sub('{' + 'shift-id' + '}', shift_id.to_s)
 
@@ -137,12 +137,12 @@ module WhenIWork
         :auth_names => auth_names,
         :return_type => 'InlineResponse2002')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_shift\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: Api#get_shift\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # 
+    #
     # Get a list of shifts.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :user_id The ID of the user to get shifts for. For multiple users, enter a list of user IDs separated by commas (e.g. 1,5,3).
@@ -159,7 +159,7 @@ module WhenIWork
       return data
     end
 
-    # 
+    #
     # Get a list of shifts.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :user_id The ID of the user to get shifts for. For multiple users, enter a list of user IDs separated by commas (e.g. 1,5,3).
@@ -173,7 +173,7 @@ module WhenIWork
     # @return [Array<(InlineResponse2001, Fixnum, Hash)>] InlineResponse2001 data, response status code and response headers
     def get_shifts_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: DefaultApi.get_shifts ..."
+        @api_client.config.logger.debug "Calling API: Api.get_shifts ..."
       end
       # resource path
       local_var_path = "/shifts".sub('{format}','json')
@@ -214,12 +214,12 @@ module WhenIWork
         :auth_names => auth_names,
         :return_type => 'InlineResponse2001')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_shifts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: Api#get_shifts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # 
+    #
     # Get a specific user by their ID.
     # @param user_id The user identifier number
     # @param [Hash] opts the optional parameters
@@ -229,17 +229,17 @@ module WhenIWork
       return data
     end
 
-    # 
+    #
     # Get a specific user by their ID.
     # @param user_id The user identifier number
     # @param [Hash] opts the optional parameters
     # @return [Array<(InlineResponse2003, Fixnum, Hash)>] InlineResponse2003 data, response status code and response headers
     def get_user_with_http_info(user_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: DefaultApi.get_user ..."
+        @api_client.config.logger.debug "Calling API: Api.get_user ..."
       end
       # verify the required parameter 'user_id' is set
-      fail ArgumentError, "Missing the required parameter 'user_id' when calling DefaultApi.get_user" if user_id.nil?
+      fail ArgumentError, "Missing the required parameter 'user_id' when calling Api.get_user" if user_id.nil?
       # resource path
       local_var_path = "/users/{user-id}".sub('{format}','json').sub('{' + 'user-id' + '}', user_id.to_s)
 
@@ -271,7 +271,7 @@ module WhenIWork
         :auth_names => auth_names,
         :return_type => 'InlineResponse2003')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: Api#get_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

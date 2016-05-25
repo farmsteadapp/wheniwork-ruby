@@ -33,13 +33,13 @@ describe WhenIWork::Configuration do
 
   describe '#base_url' do
     it 'should have the default value' do
-      expect(config.base_url).to eq('http://petstore.swagger.io/v2')
+      expect(config.base_url).to eq('https://petstore.swagger.io/v2')
     end
 
     it 'should remove trailing slashes' do
       [nil, '', '/', '//'].each do |base_path|
         config.base_path = base_path
-        expect(config.base_url).to eq('http://petstore.swagger.io')
+        expect(config.base_url).to eq('https://petstore.swagger.io')
       end
     end
   end
