@@ -1,8 +1,8 @@
-# WhenIWork::InlineResponse2002
+# WhenIWork::UserResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**shift** | [**Shift**](Shift.md) |  | [optional] 
+**user** | [**User**](User.md) |  | [optional] 
 
 

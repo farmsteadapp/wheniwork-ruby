@@ -25,69 +25,41 @@ require 'date'
 
 module WhenIWork
 
-  class Shift
-    attr_accessor :start_time
+  class TimesResponse
+    attr_accessor :start
 
-    attr_accessor :end_time
+    attr_accessor :_end
 
-    attr_accessor :created_at
+    attr_accessor :shifts
 
-    attr_accessor :updated_at
+    attr_accessor :times
 
-    attr_accessor :notified_at
+    attr_accessor :positions
 
-    attr_accessor :id
-
-    attr_accessor :account_id
-
-    attr_accessor :user_id
-
-    attr_accessor :location_id
-
-    attr_accessor :alerted
-
-    attr_accessor :is_open
-
-    attr_accessor :acknowledged
-
-    attr_accessor :notes
+    attr_accessor :users
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'start_time' => :'start_time',
-        :'end_time' => :'end_time',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'notified_at' => :'notified_at',
-        :'id' => :'id',
-        :'account_id' => :'account_id',
-        :'user_id' => :'user_id',
-        :'location_id' => :'location_id',
-        :'alerted' => :'alerted',
-        :'is_open' => :'is_open',
-        :'acknowledged' => :'acknowledged',
-        :'notes' => :'notes'
+        :'start' => :'start',
+        :'_end' => :'end',
+        :'shifts' => :'shifts',
+        :'times' => :'times',
+        :'positions' => :'positions',
+        :'users' => :'users'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'start_time' => :'DateTime',
-        :'end_time' => :'DateTime',
-        :'created_at' => :'DateTime',
-        :'updated_at' => :'DateTime',
-        :'notified_at' => :'DateTime',
-        :'id' => :'Integer',
-        :'account_id' => :'Integer',
-        :'user_id' => :'Integer',
-        :'location_id' => :'Integer',
-        :'alerted' => :'BOOLEAN',
-        :'is_open' => :'BOOLEAN',
-        :'acknowledged' => :'Integer',
-        :'notes' => :'String'
+        :'start' => :'DateTime',
+        :'_end' => :'DateTime',
+        :'shifts' => :'Array<Shift>',
+        :'times' => :'Array<Time>',
+        :'positions' => :'Array<Position>',
+        :'users' => :'Array<User>'
       }
     end
 
@@ -99,56 +71,36 @@ module WhenIWork
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'start_time')
-        self.start_time = attributes[:'start_time']
+      if attributes.has_key?(:'start')
+        self.start = attributes[:'start']
       end
 
-      if attributes.has_key?(:'end_time')
-        self.end_time = attributes[:'end_time']
+      if attributes.has_key?(:'end')
+        self._end = attributes[:'end']
       end
 
-      if attributes.has_key?(:'created_at')
-        self.created_at = attributes[:'created_at']
+      if attributes.has_key?(:'shifts')
+        if (value = attributes[:'shifts']).is_a?(Array)
+          self.shifts = value
+        end
       end
 
-      if attributes.has_key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.has_key?(:'times')
+        if (value = attributes[:'times']).is_a?(Array)
+          self.times = value
+        end
       end
 
-      if attributes.has_key?(:'notified_at')
-        self.notified_at = attributes[:'notified_at']
+      if attributes.has_key?(:'positions')
+        if (value = attributes[:'positions']).is_a?(Array)
+          self.positions = value
+        end
       end
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.has_key?(:'account_id')
-        self.account_id = attributes[:'account_id']
-      end
-
-      if attributes.has_key?(:'user_id')
-        self.user_id = attributes[:'user_id']
-      end
-
-      if attributes.has_key?(:'location_id')
-        self.location_id = attributes[:'location_id']
-      end
-
-      if attributes.has_key?(:'alerted')
-        self.alerted = attributes[:'alerted']
-      end
-
-      if attributes.has_key?(:'is_open')
-        self.is_open = attributes[:'is_open']
-      end
-
-      if attributes.has_key?(:'acknowledged')
-        self.acknowledged = attributes[:'acknowledged']
-      end
-
-      if attributes.has_key?(:'notes')
-        self.notes = attributes[:'notes']
+      if attributes.has_key?(:'users')
+        if (value = attributes[:'users']).is_a?(Array)
+          self.users = value
+        end
       end
 
     end
@@ -171,19 +123,12 @@ module WhenIWork
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          start_time == o.start_time &&
-          end_time == o.end_time &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          notified_at == o.notified_at &&
-          id == o.id &&
-          account_id == o.account_id &&
-          user_id == o.user_id &&
-          location_id == o.location_id &&
-          alerted == o.alerted &&
-          is_open == o.is_open &&
-          acknowledged == o.acknowledged &&
-          notes == o.notes
+          start == o.start &&
+          _end == o._end &&
+          shifts == o.shifts &&
+          times == o.times &&
+          positions == o.positions &&
+          users == o.users
     end
 
     # @see the `==` method
@@ -195,7 +140,7 @@ module WhenIWork
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [start_time, end_time, created_at, updated_at, notified_at, id, account_id, user_id, location_id, alerted, is_open, acknowledged, notes].hash
+      [start, _end, shifts, times, positions, users].hash
     end
 
     # Builds the object from hash

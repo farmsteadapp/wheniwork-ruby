@@ -1,4 +1,4 @@
-# WhenIWork::InlineResponse2003
+# WhenIWork::UsersResponse
 
 ## Properties
 Name | Type | Description | Notes

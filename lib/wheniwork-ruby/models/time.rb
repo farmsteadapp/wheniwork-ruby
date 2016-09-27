@@ -25,69 +25,89 @@ require 'date'
 
 module WhenIWork
 
-  class Shift
-    attr_accessor :start_time
-
-    attr_accessor :end_time
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
-
-    attr_accessor :notified_at
-
+  class Time
     attr_accessor :id
 
     attr_accessor :account_id
 
     attr_accessor :user_id
 
+    attr_accessor :creator_id
+
+    attr_accessor :position_id
+
     attr_accessor :location_id
 
-    attr_accessor :alerted
+    attr_accessor :site_id
 
-    attr_accessor :is_open
+    attr_accessor :shift_id
 
-    attr_accessor :acknowledged
+    attr_accessor :start_time
 
-    attr_accessor :notes
+    attr_accessor :end_time
+
+    attr_accessor :length
+
+    attr_accessor :hourly_rate
+
+    attr_accessor :is_alerted
+
+    attr_accessor :alert_type
+
+    attr_accessor :is_approved
+
+    attr_accessor :modified_by
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'start_time' => :'start_time',
-        :'end_time' => :'end_time',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'notified_at' => :'notified_at',
         :'id' => :'id',
         :'account_id' => :'account_id',
         :'user_id' => :'user_id',
+        :'creator_id' => :'creator_id',
+        :'position_id' => :'position_id',
         :'location_id' => :'location_id',
-        :'alerted' => :'alerted',
-        :'is_open' => :'is_open',
-        :'acknowledged' => :'acknowledged',
-        :'notes' => :'notes'
+        :'site_id' => :'site_id',
+        :'shift_id' => :'shift_id',
+        :'start_time' => :'start_time',
+        :'end_time' => :'end_time',
+        :'length' => :'length',
+        :'hourly_rate' => :'hourly_rate',
+        :'is_alerted' => :'is_alerted',
+        :'alert_type' => :'alert_type',
+        :'is_approved' => :'is_approved',
+        :'modified_by' => :'modified_by',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'start_time' => :'DateTime',
-        :'end_time' => :'DateTime',
-        :'created_at' => :'DateTime',
-        :'updated_at' => :'DateTime',
-        :'notified_at' => :'DateTime',
         :'id' => :'Integer',
         :'account_id' => :'Integer',
         :'user_id' => :'Integer',
+        :'creator_id' => :'Integer',
+        :'position_id' => :'Integer',
         :'location_id' => :'Integer',
-        :'alerted' => :'BOOLEAN',
-        :'is_open' => :'BOOLEAN',
-        :'acknowledged' => :'Integer',
-        :'notes' => :'String'
+        :'site_id' => :'Integer',
+        :'shift_id' => :'Integer',
+        :'start_time' => :'DateTime',
+        :'end_time' => :'DateTime',
+        :'length' => :'Float',
+        :'hourly_rate' => :'Float',
+        :'is_alerted' => :'BOOLEAN',
+        :'alert_type' => :'Integer',
+        :'is_approved' => :'BOOLEAN',
+        :'modified_by' => :'Integer',
+        :'created_at' => :'DateTime',
+        :'updated_at' => :'DateTime'
       }
     end
 
@@ -98,26 +118,6 @@ module WhenIWork
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
-
-      if attributes.has_key?(:'start_time')
-        self.start_time = attributes[:'start_time']
-      end
-
-      if attributes.has_key?(:'end_time')
-        self.end_time = attributes[:'end_time']
-      end
-
-      if attributes.has_key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.has_key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.has_key?(:'notified_at')
-        self.notified_at = attributes[:'notified_at']
-      end
 
       if attributes.has_key?(:'id')
         self.id = attributes[:'id']
@@ -131,24 +131,64 @@ module WhenIWork
         self.user_id = attributes[:'user_id']
       end
 
+      if attributes.has_key?(:'creator_id')
+        self.creator_id = attributes[:'creator_id']
+      end
+
+      if attributes.has_key?(:'position_id')
+        self.position_id = attributes[:'position_id']
+      end
+
       if attributes.has_key?(:'location_id')
         self.location_id = attributes[:'location_id']
       end
 
-      if attributes.has_key?(:'alerted')
-        self.alerted = attributes[:'alerted']
+      if attributes.has_key?(:'site_id')
+        self.site_id = attributes[:'site_id']
       end
 
-      if attributes.has_key?(:'is_open')
-        self.is_open = attributes[:'is_open']
+      if attributes.has_key?(:'shift_id')
+        self.shift_id = attributes[:'shift_id']
       end
 
-      if attributes.has_key?(:'acknowledged')
-        self.acknowledged = attributes[:'acknowledged']
+      if attributes.has_key?(:'start_time')
+        self.start_time = attributes[:'start_time']
       end
 
-      if attributes.has_key?(:'notes')
-        self.notes = attributes[:'notes']
+      if attributes.has_key?(:'end_time')
+        self.end_time = attributes[:'end_time']
+      end
+
+      if attributes.has_key?(:'length')
+        self.length = attributes[:'length']
+      end
+
+      if attributes.has_key?(:'hourly_rate')
+        self.hourly_rate = attributes[:'hourly_rate']
+      end
+
+      if attributes.has_key?(:'is_alerted')
+        self.is_alerted = attributes[:'is_alerted']
+      end
+
+      if attributes.has_key?(:'alert_type')
+        self.alert_type = attributes[:'alert_type']
+      end
+
+      if attributes.has_key?(:'is_approved')
+        self.is_approved = attributes[:'is_approved']
+      end
+
+      if attributes.has_key?(:'modified_by')
+        self.modified_by = attributes[:'modified_by']
+      end
+
+      if attributes.has_key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.has_key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
 
     end
@@ -171,19 +211,24 @@ module WhenIWork
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          start_time == o.start_time &&
-          end_time == o.end_time &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          notified_at == o.notified_at &&
           id == o.id &&
           account_id == o.account_id &&
           user_id == o.user_id &&
+          creator_id == o.creator_id &&
+          position_id == o.position_id &&
           location_id == o.location_id &&
-          alerted == o.alerted &&
-          is_open == o.is_open &&
-          acknowledged == o.acknowledged &&
-          notes == o.notes
+          site_id == o.site_id &&
+          shift_id == o.shift_id &&
+          start_time == o.start_time &&
+          end_time == o.end_time &&
+          length == o.length &&
+          hourly_rate == o.hourly_rate &&
+          is_alerted == o.is_alerted &&
+          alert_type == o.alert_type &&
+          is_approved == o.is_approved &&
+          modified_by == o.modified_by &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -195,7 +240,7 @@ module WhenIWork
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [start_time, end_time, created_at, updated_at, notified_at, id, account_id, user_id, location_id, alerted, is_open, acknowledged, notes].hash
+      [id, account_id, user_id, creator_id, position_id, location_id, site_id, shift_id, start_time, end_time, length, hourly_rate, is_alerted, alert_type, is_approved, modified_by, created_at, updated_at].hash
     end
 
     # Builds the object from hash

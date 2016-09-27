@@ -1,4 +1,4 @@
-# WhenIWork::InlineResponse200
+# WhenIWork::PositionsResponse
 
 ## Properties
 Name | Type | Description | Notes
