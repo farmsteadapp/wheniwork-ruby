@@ -27,6 +27,7 @@ module WhenIWork
 
   class UserResponse
     attr_accessor :user
+    attr_accessor :raw_data
 
 
     # Attribute mapping from ruby-style variable name to JSON key.

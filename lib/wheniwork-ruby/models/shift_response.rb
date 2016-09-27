@@ -27,6 +27,7 @@ module WhenIWork
 
   class ShiftResponse
     attr_accessor :shift
+    attr_accessor :raw_data
 
 
     # Attribute mapping from ruby-style variable name to JSON key.

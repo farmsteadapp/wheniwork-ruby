@@ -31,6 +31,7 @@ module WhenIWork
     attr_accessor :_end
 
     attr_accessor :shifts
+    attr_accessor :raw_data
 
 
     # Attribute mapping from ruby-style variable name to JSON key.

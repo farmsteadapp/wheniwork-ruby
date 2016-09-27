@@ -33,6 +33,7 @@ module WhenIWork
     attr_accessor :color
 
     attr_accessor :sort
+    attr_accessor :raw_data
 
 
     # Attribute mapping from ruby-style variable name to JSON key.

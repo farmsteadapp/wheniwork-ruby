@@ -61,6 +61,7 @@ module WhenIWork
     attr_accessor :created_at
 
     attr_accessor :updated_at
+    attr_accessor :raw_data
 
 
     # Attribute mapping from ruby-style variable name to JSON key.

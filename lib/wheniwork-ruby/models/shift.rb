@@ -51,6 +51,7 @@ module WhenIWork
     attr_accessor :acknowledged
 
     attr_accessor :notes
+    attr_accessor :raw_data
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
