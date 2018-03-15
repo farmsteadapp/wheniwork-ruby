@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **notified_at** | **DateTime** |  | [optional] 
 **id** | **Integer** |  | [optional] 
 **account_id** | **Integer** |  | [optional] 
-**user_id** | **Integer** |  | [optional] 
 **location_id** | **Integer** |  | [optional] 
+**user_id** | **Integer** |  | [optional] 
 **alerted** | **BOOLEAN** |  | [optional] 
 **is_open** | **BOOLEAN** |  | [optional] 
-**acknowledged** | **Integer** |  | [optional] 
+**acknowledged** | **BOOLEAN** |  | [optional] 
 **notes** | **String** |  | [optional] 
 
 

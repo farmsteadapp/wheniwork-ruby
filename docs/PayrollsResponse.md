@@ -1,8 +1,8 @@
-# WhenIWork::PositionsResponse
+# WhenIWork::PayrollsResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**positions** | [**Array&lt;Position&gt;**](Position.md) |  | [optional] 
+**payrolls** | [**Array&lt;Payroll&gt;**](Payroll.md) |  | [optional] 
 
 

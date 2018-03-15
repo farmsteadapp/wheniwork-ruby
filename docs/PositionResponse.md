@@ -1,8 +1,8 @@
-# WhenIWork::UsersResponse
+# WhenIWork::PositionResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**users** | [**Array&lt;User&gt;**](User.md) |  | [optional] 
+**positions** | [**Array&lt;Position&gt;**](Position.md) |  | [optional] 
 
 
