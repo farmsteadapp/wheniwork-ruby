@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**shifts_get**](DefaultApi.md#shifts_get) | **GET** /shifts | all shifts
 [**shifts_shift_id_get**](DefaultApi.md#shifts_shift_id_get) | **GET** /shifts/{shiftId} | Find a shift by id
 [**times_get**](DefaultApi.md#times_get) | **GET** /times | get times
-[**users_user_id_get**](DefaultApi.md#users_user_id_get) | **GET** /users/{userId} | get user
+[**users_get**](DefaultApi.md#users_get) | **GET** /users | get users
 
 
 # **payrolls_get**
@@ -279,10 +279,10 @@ Name | Type | Description  | Notes
 
 
 
-# **users_user_id_get**
-> UserResponse users_user_id_get(user_id)
+# **users_get**
+> UsersResponse users_get(opts)
 
-get user
+get users
 
 ### Example
 ```ruby
@@ -298,15 +298,16 @@ end
 
 api_instance = WhenIWork::DefaultApi.new
 
-user_id = 789 # Integer | ID of shift to return
-
+opts = { 
+  ids: 56 # Integer | The ID of the user to get times for. For multiple users, enter a list of user IDs separated by commas (e.g. 1,5,3)
+}
 
 begin
-  #get user
-  result = api_instance.users_user_id_get(user_id)
+  #get users
+  result = api_instance.users_get(opts)
   p result
 rescue WhenIWork::ApiError => e
-  puts "Exception when calling DefaultApi->users_user_id_get: #{e}"
+  puts "Exception when calling DefaultApi->users_get: #{e}"
 end
 ```
 
@@ -314,11 +315,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **Integer**| ID of shift to return | 
+ **ids** | **Integer**| The ID of the user to get times for. For multiple users, enter a list of user IDs separated by commas (e.g. 1,5,3) | [optional] 
 
 ### Return type
 
-[**UserResponse**](UserResponse.md)
+[**UsersResponse**](UsersResponse.md)
 
 ### Authorization
 
